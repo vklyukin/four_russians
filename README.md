@@ -10,7 +10,20 @@ This project contains the implementation of **Four Russians Algorithm** for mult
 The pseudocode is given below:
 ![pseudocode](https://louridas.github.io/rwa/assignments/four-russians/four_russians_algorithm.png)
 
-Time complexity: <img src="https://render.githubusercontent.com/render/math?math=O(\frac{n^3}{log(n)}) = -1">
+The code wraps boolean matrices into the `BoolMatrix` abstraction, which can manipulate with raw 2d-lists. In particular, it supports logical-OR between matrices and rows, extracting blocks (row-wise and column-wise) from matrix, assigning and reading by index.
+
+The Four Russians Algorithm itself is divided into 2 parts: decomposition into blocks (lines 2-4 and 19-20) and blocks multiplication (lines 5-18).
+
+Block multiplication is done as follows:
+1. Create matrix with all possible disjunctions (RS) from row-wise block matrix (B_i)
+2. Create an empty block multiplication matrix (C_i)
+3. Convert each row from column-wise block matrix (A_i) into the decimal number
+4. Assign the row from RS by this decimal index to the corresponing row of C_i
+
+In the block decomposition module we create row-wise and column-wise blocks and iteratively multiply them. After each block multiplication we apply logical-OR between result matrix in block multiplication result matrix.
+
+
+Time complexity: <img src="https://render.githubusercontent.com/render/math?math=O(\frac{n^3}{log(n)})">
 
 Explanation of the algorithm: [Real World Algorithms](https://louridas.github.io/rwa/assignments/four-russians/)  
 The details of the algorithm: [Springer](https://link.springer.com/content/pdf/10.1007%2F978-0-387-88757-9_9.pdf).
